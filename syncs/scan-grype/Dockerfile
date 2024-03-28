@@ -1,7 +1,7 @@
-FROM anchore/grype:v0.61.0 AS grype
+FROM anchore/grype:v0.74.7 AS grype
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-FROM alpine:3.17.3
+FROM alpine:3.19.1
 
 # install latest version of git, psql and jq
 RUN apk upgrade && apk add --no-cache git postgresql-client jq

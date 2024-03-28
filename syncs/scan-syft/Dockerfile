@@ -1,7 +1,7 @@
-FROM anchore/syft:v0.77.0 AS syft
+FROM anchore/syft:v1.1.0 AS syft
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-FROM alpine:3.17.3
+FROM alpine:3.19.1
 
 # install latest version of git, psql and jq
 RUN apk upgrade && apk add --no-cache git postgresql-client jq

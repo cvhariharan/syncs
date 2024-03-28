@@ -1,7 +1,7 @@
-FROM aquasec/tfsec:v1.28 as tfsec
+FROM aquasec/tfsec:v1.28.5 as tfsec
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-FROM debian:buster-slim
+FROM debian:bookworm-slim
 
 RUN apt-get update && apt-get install -y git postgresql-client jq
 
