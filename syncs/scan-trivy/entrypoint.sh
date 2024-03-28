@@ -14,9 +14,7 @@ set -euo pipefail
 
 psql $MERGESTAT_POSTGRES_URL -1 --quiet --file /syncer/schema.sql
 
-export GITHUB_TOKEN=$MERGESTAT_AUTH_TOKEN
-
-trivy repository $MERGESTAT_REPO_URL -q -f json --timeout 30m > _mergestat_trivy_scan_results.json
+trivy fs /mergestat/repo -q -f json --timeout 30m > _mergestat_trivy_scan_results.json
 
 jq -rc '[env.MERGESTAT_REPO_ID, . | tostring] | @csv' _mergestat_trivy_scan_results.json \
   | psql $MERGESTAT_POSTGRES_URL -1 --quiet \
