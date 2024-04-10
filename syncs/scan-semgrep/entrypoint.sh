@@ -7,7 +7,7 @@ set -euox pipefail
 
 psql $MERGESTAT_POSTGRES_URL -1 --quiet --file /syncer/schema.sql
 
-semgrep scan --config /syncer/semgrep-rules . --json --output="_mergestat_semgrep_scan_results.json"
+semgrep scan --config /syncer/semgrep-rules . --metrics=off --json --output="_mergestat_semgrep_scan_results.json"
 
 jq -rc '[env.MERGESTAT_REPO_ID, . | tostring] | @csv' _mergestat_semgrep_scan_results.json \
   | psql $MERGESTAT_POSTGRES_URL -1 --quiet \
