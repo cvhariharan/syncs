@@ -9,6 +9,6 @@ WORKDIR /app
 RUN apk add --repository http://dl-4.alpinelinux.org/alpine/edge/community osv-scanner 
 
 COPY . .
-RUN deno cache main.ts
+RUN deno cache /app/main.ts
 
 CMD ["run", "--allow-net", "--allow-env", "--allow-read", "--allow-run", "main.ts"]
