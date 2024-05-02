@@ -26,7 +26,7 @@ const tx = await client.createTransaction("syncs/scan-osv");
 await tx.begin();
 
 // apply the database schema
-const schema = await Deno.readTextFile("./schema.sql");
+const schema = await Deno.readTextFile("/app/schema.sql");
 await tx.queryArray(schema);
 
 // remove any previous records and insert the new record
